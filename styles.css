@@ -471,8 +471,44 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.start {
-  background: linear-gradient(135deg, rgba(107, 139, 255, 0.12), rgba(247, 123, 123, 0.08));
+.mapping-system {
+  background: linear-gradient(135deg, rgba(107, 139, 255, 0.08), rgba(247, 123, 123, 0.05));
+}
+
+.tabs {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.35rem;
+  border-radius: 999px;
+  gap: 0.35rem;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab-button.is-active {
+  background: rgba(107, 139, 255, 0.3);
+  color: var(--text);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+.view-grid {
+  margin-top: 1rem;
 }
 
 .start-card {

@@ -1,4 +1,4 @@
-const mapGrid = document.querySelector("#map-grid");
+const mapGrids = document.querySelectorAll(".map-grid");
 const selectedMap = document.querySelector("#selected-map");
 const mapRoot = document.querySelector("#map-root");
 const form = document.querySelector("#start-form");
@@ -24,12 +24,12 @@ function showToast(message) {
   }, 3000);
 }
 
-if (mapGrid) {
-  mapGrid.addEventListener("click", (event) => {
+mapGrids.forEach((grid) => {
+  grid.addEventListener("click", (event) => {
     const card = event.target.closest(".map-card");
-    if (!card) return;
+    if (!card || !grid.contains(card)) return;
 
-    mapGrid.querySelectorAll(".map-card").forEach((item) => {
+    grid.querySelectorAll(".map-card").forEach((item) => {
       item.classList.remove("is-active");
     });
     card.classList.add("is-active");
@@ -43,7 +43,26 @@ if (mapGrid) {
     }
     showToast(mapDescriptions[mapName] || "Mapping system selected.");
   });
-}
+});
+
+const tabButtons = document.querySelectorAll(".tab-button");
+const tabPanels = document.querySelectorAll(".tab-panel");
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = button.dataset.tab;
+    tabButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-selected", isActive.toString());
+    });
+    tabPanels.forEach((panel) => {
+      const isActive = panel.id === `tab-${target}`;
+      panel.classList.toggle("is-active", isActive);
+      panel.hidden = !isActive;
+    });
+  });
+});
 
 if (form) {
   form.addEventListener("submit", (event) => {
