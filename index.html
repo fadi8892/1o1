@@ -55,8 +55,9 @@
           <span>Live Family Map</span>
           <span class="status">Synced</span>
         </div>
+        <p class="hero-card-selected">Selected map: <strong id="selected-map">Radial Sunburst</strong></p>
         <div class="hero-map">
-          <div class="map-node center">You</div>
+          <div class="map-node center" id="map-root">You</div>
           <div class="map-node parent">Parent</div>
           <div class="map-node parent two">Parent</div>
           <div class="map-node child">Child</div>
@@ -84,33 +85,33 @@
           story context. Each map is optimized for clarity, scale, and visual impact.
         </p>
       </div>
-      <div class="map-grid">
-        <article class="map-card">
+      <div class="map-grid" id="map-grid">
+        <article class="map-card is-active" data-map="Radial Sunburst">
           <h3>Radial Sunburst</h3>
           <p>Perfect for dense generations with concentric family rings.</p>
           <div class="map-preview radial"></div>
         </article>
-        <article class="map-card">
+        <article class="map-card" data-map="Treemap Mosaic">
           <h3>Treemap Mosaic</h3>
           <p>Compare branch sizes instantly with proportional tiles.</p>
           <div class="map-preview treemap"></div>
         </article>
-        <article class="map-card">
+        <article class="map-card" data-map="Dendrogram Flow">
           <h3>Dendrogram Flow</h3>
           <p>Elegant branching lines that highlight lineage depth.</p>
           <div class="map-preview dendrogram"></div>
         </article>
-        <article class="map-card">
+        <article class="map-card" data-map="Force Atlas">
           <h3>Force Atlas</h3>
           <p>Show relationships as a living constellation network.</p>
           <div class="map-preview force"></div>
         </article>
-        <article class="map-card">
+        <article class="map-card" data-map="Timeline Grid">
           <h3>Timeline Grid</h3>
           <p>Overlay family events with world history and milestones.</p>
           <div class="map-preview timeline"></div>
         </article>
-        <article class="map-card">
+        <article class="map-card" data-map="Geo Heritage">
           <h3>Geo Heritage</h3>
           <p>Map migrations and ancestral roots across the globe.</p>
           <div class="map-preview geo"></div>
@@ -222,7 +223,7 @@
             imports, and smart relationship mapping.
           </p>
         </div>
-        <form class="start-form">
+        <form class="start-form" id="start-form">
           <label>
             Full name
             <input type="text" name="name" placeholder="Alex Rivera" required />
@@ -232,6 +233,7 @@
             <input type="email" name="email" placeholder="alex@email.com" required />
           </label>
           <button class="cta" type="submit">Create my tree</button>
+          <p class="start-success" id="start-success" role="status" aria-live="polite"></p>
           <p class="start-note">We will never share your information without permission.</p>
         </form>
       </div>
@@ -264,5 +266,7 @@
       </div>
     </div>
   </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
 </body>
 </html>
